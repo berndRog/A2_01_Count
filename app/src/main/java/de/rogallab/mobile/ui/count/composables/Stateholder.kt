@@ -10,15 +10,15 @@ import de.rogallab.mobile.domain.utilities.logDebug
 
 @Composable  // Stateful
 fun Stateholder(
+   initCount: Int,
    modifier: Modifier
 ) {
-
-   // State: observer pattern, state by delegate
+   // Observable State,  state by delegate
    var count: Int by rememberSaveable {
-      mutableIntStateOf(0) // value: observable
+      mutableIntStateOf(initCount) // value: observable
    }
    // State change
-   fun onIncrementCount(): Unit {
+   fun onIncrementCount() {
       logDebug("<-StateHolder", "onIncrementCount()")
       count = count+1
    }

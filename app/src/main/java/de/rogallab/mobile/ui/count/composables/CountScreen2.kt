@@ -2,10 +2,7 @@ package de.rogallab.mobile.ui.count.composables
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -23,22 +20,22 @@ import de.rogallab.mobile.domain.utilities.logDebug
 
 @Composable
 fun CountScreen2(
-   count: Int,
-   modifier: Modifier
+   initCount: Int,          // State ↓
+   modifier: Modifier   // State ↓
 ) {
 
-   var countState: Int by remember {
-      mutableIntStateOf(count)
+   var count: Int by remember {
+      mutableIntStateOf(initCount)
    }
 
    Column(
-      modifier = modifier.fillMaxSize()
+      modifier = modifier
    ) {
 
-      logDebug("<-CountScreen2", "Composition $countState")
+      logDebug("<-CountScreen2", "Composition $count")
 
       Text(
-         text = "$countState",      // getter
+         text = "$count",      // getter
          textAlign = TextAlign.Center,
          modifier = Modifier
             .border(border = BorderStroke(3.dp, Color.Gray))
@@ -47,7 +44,7 @@ fun CountScreen2(
       )
 
       Button(
-         onClick = { countState++ },  // setter
+         onClick = { count++ },  // setter
          modifier = Modifier
             .padding(vertical = 8.dp)
             .fillMaxWidth()

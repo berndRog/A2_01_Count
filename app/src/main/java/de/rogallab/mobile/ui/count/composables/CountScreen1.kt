@@ -3,8 +3,6 @@ package de.rogallab.mobile.ui.count.composables
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -21,16 +19,16 @@ import de.rogallab.mobile.domain.utilities.logDebug
 
 @Composable
 fun CountScreen1(
-   count: Int,
-   modifier: Modifier
+   initCount: Int,          // State ↓
+   modifier: Modifier   // Value
 ) {
 
    val state: MutableState<Int> = remember {
-      mutableIntStateOf(count)
+      mutableIntStateOf(initCount)
    }
 
    Column(
-      modifier = modifier.fillMaxSize()
+      modifier = modifier
    ) {
 
       logDebug("<-CountScreen1", "Composition ${state.value}")
